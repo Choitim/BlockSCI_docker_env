@@ -1,7 +1,7 @@
 # 베이스 이미지로 Ubuntu 18.04 사용
 FROM ubuntu:18.04
 
-# 환경 변수 설정
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 # 필수 패키지 설치
@@ -49,7 +49,9 @@ RUN git clone https://github.com/citp/BlockSci.git /BlockSci && \
 RUN cd /BlockSci && \
     CC=gcc-7 CXX=g++-7 pip3 install -e blockscipy
 
-# 시간대를 UTC로 설정
+# 로컬 폴더를 이미지에 포함
+COPY ./local_folder /container_folder
+
 RUN ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 

@@ -12,9 +12,3 @@ services:
       nofile:
         soft: 64000
         hard: 64000
-    command: >
-      /bin/bash -c "
-      blocksci_parser /bitcoin_data/blocksci.conf generate-config bitcoin /bitcoin_data --disk /bitcoin_data && 
-      blocksci_parser /bitcoin_data/blocksci.conf update &&
-      bash
-      "
